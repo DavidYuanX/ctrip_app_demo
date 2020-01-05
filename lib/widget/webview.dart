@@ -83,8 +83,6 @@ class _WebViewState extends State<WebView> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.statusBarColor);
-
     String statusBarColorStr = widget.statusBarColor ?? 'ffffff';
     Color backButtonColor;
     if (statusBarColorStr == 'ffffff') {
@@ -92,7 +90,6 @@ class _WebViewState extends State<WebView> {
     } else {
       backButtonColor = Colors.white;
     }
-    print(widget.url);
     return Scaffold(
       body: Column(
         children: <Widget>[
