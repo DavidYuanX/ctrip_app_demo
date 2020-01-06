@@ -1,5 +1,6 @@
 import 'package:ctrip_app_demo/dao/seach_dao.dart';
 import 'package:ctrip_app_demo/model/seach_model.dart';
+import 'package:ctrip_app_demo/pages/speak_page.dart';
 import 'package:ctrip_app_demo/widget/search_bar.dart';
 import 'package:ctrip_app_demo/widget/webview.dart';
 import 'package:flutter/material.dart';
@@ -29,11 +30,12 @@ class SearchPage extends StatefulWidget {
   final String keyword;
   final String hint;
 
-  const SearchPage({Key key,
-    this.hideLeft,
-    this.searchUrl = SEACH_URL,
-    this.keyword,
-    this.hint  = '搜索天下美食'})
+  const SearchPage(
+      {Key key,
+      this.hideLeft,
+      this.searchUrl = SEACH_URL,
+      this.keyword,
+      this.hint = '搜索天下美食'})
       : super(key: key);
 
   @override
@@ -83,9 +85,9 @@ class _SearchPageState extends State<SearchPage> {
     String url = widget.searchUrl + text;
     SearchDao.fetch(url, text).then((SearchModel model) {
       if (model.keyword == keyword) {
-      setState(() {
-        searchModel = model;
-      });
+        setState(() {
+          searchModel = model;
+        });
       }
     }).catchError((e) {
       print(e.toString());
@@ -98,10 +100,10 @@ class _SearchPageState extends State<SearchPage> {
         Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Color(0x66000000), Colors.transparent],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              )),
+            colors: [Color(0x66000000), Colors.transparent],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          )),
           child: Container(
             padding: EdgeInsets.only(top: 20),
             height: 80,
@@ -110,6 +112,7 @@ class _SearchPageState extends State<SearchPage> {
               hideLeft: widget.hideLeft,
               defaultText: widget.keyword,
               hint: widget.hint,
+              speakClick: _jumpToSpeck,
               leftButtonClick: () {
                 Navigator.pop(context);
               },
@@ -129,8 +132,7 @@ class _SearchPageState extends State<SearchPage> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    WebView(
+                builder: (context) => WebView(
 //                      hideAppBar: true,
                       url: item.url,
                       title: '详情',
@@ -140,7 +142,7 @@ class _SearchPageState extends State<SearchPage> {
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 0.3))
 //            , color: Colors.grey
-        ),
+            ),
         child: Row(
           children: <Widget>[
             Container(
@@ -209,9 +211,9 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Iterable<TextSpan> _keywordTextSpans(String word, String keyword) {
-    List<TextSpan>spans = [];
+    List<TextSpan> spans = [];
     if (word == null || word.length == 0) return spans;
-    List<String>arr = word.split(keyword);
+    List<String> arr = word.split(keyword);
     TextStyle normalStyle = TextStyle(fontSize: 16, color: Colors.black87);
     TextStyle keywordStyle = TextStyle(fontSize: 16, color: Colors.orange);
     for (int i = 0; i < arr.length; i++) {
@@ -224,5 +226,10 @@ class _SearchPageState extends State<SearchPage> {
       }
     }
     return spans;
+  }
+
+  void _jumpToSpeck() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => SpeakPage()));
   }
 }

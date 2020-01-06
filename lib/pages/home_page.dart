@@ -7,6 +7,7 @@ import 'package:ctrip_app_demo/model/grid_nav_model.dart';
 import 'package:ctrip_app_demo/model/home_model.dart';
 import 'package:ctrip_app_demo/model/sales_box_model.dart';
 import 'package:ctrip_app_demo/pages/search_page.dart';
+import 'package:ctrip_app_demo/pages/speak_page.dart';
 import 'package:ctrip_app_demo/widget/gtid_nav.dart';
 import 'package:ctrip_app_demo/widget/loading_container.dart';
 import 'package:ctrip_app_demo/widget/local_nav.dart';
@@ -247,5 +248,8 @@ class _HomePageState extends State<HomePage> {
     }));
   }
 
-  void _jumpToSpeak() {}
+  void _jumpToSpeak() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => SpeakPage()));
+  }
 }
