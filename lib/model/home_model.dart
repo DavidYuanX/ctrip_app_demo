@@ -3,7 +3,7 @@ import 'package:ctrip_app_demo/model/conmon_model.dart';
 import 'package:ctrip_app_demo/model/grid_nav_model.dart';
 import 'package:ctrip_app_demo/model/sales_box_model.dart';
 
-class HomeModel {
+class TravelModel {
   final ConfigModel config;
   final List<CommonModel> bannerList;
   final List<CommonModel> localNavList;
@@ -11,7 +11,7 @@ class HomeModel {
   final GridNavModel gridNav;
   final SalesBoxModel salesBox;
 
-  HomeModel(
+  TravelModel(
       {this.config,
       this.bannerList,
       this.localNavList,
@@ -19,7 +19,7 @@ class HomeModel {
       this.gridNav,
       this.salesBox});
 
-  factory HomeModel.fromJson(Map<String, dynamic> json) {
+  factory TravelModel.fromJson(Map<String, dynamic> json) {
     var localNavListJson = json['localNavList'] as List;
     List<CommonModel> localNavList =
         localNavListJson.map((i) => CommonModel.fromJson(i)).toList();
@@ -32,7 +32,7 @@ class HomeModel {
     List<CommonModel> subNavList =
         subNavListJson.map((i) => CommonModel.fromJson(i)).toList();
 
-    return HomeModel(
+    return TravelModel(
       localNavList: localNavList,
       bannerList: bannerList,
       subNavList: subNavList,

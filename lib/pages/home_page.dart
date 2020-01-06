@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
 //      });
 //    });
     try {
-      HomeModel model = await HomeDao.fetch();
+      TravelModel model = await HomeDao.fetch();
 //      model.bannerList.map((item) {
 //        print(item.icon);
 //      });
