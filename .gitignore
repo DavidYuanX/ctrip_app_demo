@@ -38,3 +38,4 @@ lib/generated_plugin_registrant.dart
 ios/plugin/ASRPIugin/BDSClientLib/lBaiduSpeechSDK.a
 ios/plugin/ASRPIugin/BDSClientLib/lBaiduSpeechSDK.a
 ios/plugin/ASRPIugin/BDSClientLib/lBaiduSpeechSDK.a
+*.a
